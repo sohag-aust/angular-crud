@@ -10,7 +10,7 @@ export class CreateEmployeeComponent implements OnInit {
 
   fullName!: string;
   email!: string;
-  gender!: string;
+  gender: string = 'male'; // check male by default, default value should be same as value property in html
   phoneNumber!: number;
   contactPreference!: string;
 
