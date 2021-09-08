@@ -13,6 +13,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ListEmployeesComponent } from './employees/list-employees.component';
 import { CreateEmployeeComponent } from './employees/create-employee.component';
 
+// datepicker module
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+
 // declaring routes
 const appRoutes: Routes = [
   { path: 'list', component: ListEmployeesComponent},
@@ -31,7 +34,8 @@ const appRoutes: Routes = [
     AppRoutingModule,
     BrowserAnimationsModule,
     RouterModule.forRoot(appRoutes),
-    FormsModule
+    FormsModule,
+    BsDatepickerModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
