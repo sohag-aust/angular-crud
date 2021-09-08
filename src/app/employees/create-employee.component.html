@@ -7,7 +7,40 @@
         <div class="panel-body">
             <div class="form-group">
                 <label for="fName"> Full Name </label>
-                <input required type="text" id="fName" class="form-control" name="fullName" [(ngModel)]="fullName">
+                <input required type="text" id="fName" class="form-control" name="fullName" [(ngModel)]="fullName" #fullNameControl="ngModel"> <!-- using fullNameControl for catching the properties of the form input (touch/untouch, pristine/dirty, valid/invalid)-->
+                <!-- Template variables help you use data from one part of a template in another part of the template. Use template variables to perform tasks such as respond to user input or finely tune your application's forms. 
+                    A template variable can refer to the following: a DOM element within a template.-->
+            </div>
+
+            <div class="container">
+                <!-- input label -->
+                <table class="table table-danger" border="1" >
+                    <thead>
+                      <tr class="bg-success">
+                        <td colspan="6" style="width: 100%; padding: 3px; white-space: nowrap;">
+                            <h3 class="text-center">Full Name Field</h3>
+                        </td>
+                      </tr>
+                      <tr>
+                        <th scope="col">Touched</th>
+                        <th scope="col">Untouched</th>
+                        <th scope="col">Pristine</th> <!-- pristine means : input field not yet changed -->
+                        <th scope="col">Dirty</th> <!-- dirty means : input field is changed -->
+                        <th scope="col">Valid</th>
+                        <th scope="col">Invalid</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>{{ fullNameControl.touched }}</td>
+                        <td>{{ fullNameControl.untouched }}</td>
+                        <td>{{ fullNameControl.pristine }}</td>
+                        <td>{{ fullNameControl.dirty }}</td>
+                        <td>{{ fullNameControl.valid }}</td>
+                        <td>{{ fullNameControl.invalid }}</td>
+                      </tr>
+                    </tbody>
+                </table>
             </div>
     
             <div class="form-group">
