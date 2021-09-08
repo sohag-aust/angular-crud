@@ -1,4 +1,4 @@
-<form #employeeForm="ngForm" (ngSubmit)="saveEmployee(employeeForm)">
+<form #employeeForm="ngForm" (ngSubmit)="saveEmployee(employeeForm)"> <!-- ngNativeValidate directive, is used for enable browser validation, we should disable it, because, various browser implement browser validation differently -->
     <div class="panel panel-primary">
         <div class="panel-heading bg-primary mt-4">
             <h3 class="panel-title">Create Employee</h3>
@@ -7,7 +7,7 @@
         <div class="panel-body">
             <div class="form-group">
                 <label for="fName"> Full Name </label>
-                <input type="text" id="fName" class="form-control" name="fullName" [(ngModel)]="fullName">
+                <input required type="text" id="fName" class="form-control" name="fullName" [(ngModel)]="fullName">
             </div>
     
             <div class="form-group">
