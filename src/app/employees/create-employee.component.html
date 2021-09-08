@@ -1,1 +1,25 @@
-<p>create-employee works!</p>
+<form #employeeForm="ngForm" (ngSubmit)="saveEmployee(employeeForm)">
+    <div class="panel panel-primary">
+        <div class="panel-heading bg-primary mt-4">
+            <h3 class="panel-title">Create Employee</h3>
+        </div>
+    
+        <div class="panel-body">
+            <div class="form-group">
+                <label for="fName"> Full Name </label>
+                <input type="text" id="fName" class="form-control" name="fullName" [(ngModel)]="fullName">
+            </div>
+    
+            <div class="form-group">
+                <label for="email"> Email </label>
+                <input type="text" id="email" class="form-control" name="email" [(ngModel)]="email">
+            </div>
+        </div>
+    
+        <div class="panel-footer mt-3">
+            <button type="submit" class="btn btn-primary">Save</button>
+        </div>
+    </div>
+</form>
+
+Angular generated Form Model : {{employeeForm.value | json}}
