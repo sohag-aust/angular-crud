@@ -16,6 +16,9 @@ import { CreateEmployeeComponent } from './employees/create-employee.component';
 // datepicker module
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 
+// datepicker customization
+import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
+
 // declaring routes
 const appRoutes: Routes = [
   { path: 'list', component: ListEmployeesComponent},

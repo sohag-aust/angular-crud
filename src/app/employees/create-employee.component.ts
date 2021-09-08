@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
 
 import { Department } from '../models/department.model';
 
@@ -17,7 +18,7 @@ export class CreateEmployeeComponent implements OnInit {
   contactPreference!: string;
   isActive!: boolean;
   department: string = '3';
-  dateOfBirth!: any;
+  dateOfBirth: Date = new Date(1990, 0, 1);
 
   departments: Department[] = [
     { id: 1, name: 'Help Desk' },
@@ -26,7 +27,24 @@ export class CreateEmployeeComponent implements OnInit {
     { id: 4, name: 'Paroll' }
   ];
 
-  constructor() { }
+  datePickerConfig!: Partial<BsDatepickerConfig>;
+
+  constructor() { 
+    this.datePickerConfig = Object.assign(
+      {
+
+      },
+
+      { 
+        containerClass: 'theme-dark-blue',
+        showWeekNumbers: true,
+        minDate: new Date(1990,0,1), // month number starts from 0 ends at 11
+        maxDate: new Date(2003,0,1)
+      }
+    );  // here, object.assign() method is very useful for copying property value from one or more source object, 
+       // like here, the first parameter is the destination object and the second one is the sources, 
+      // here it has one source
+  }
 
   ngOnInit(): void {
   }
