@@ -41,11 +41,40 @@
                       </tr>
                     </tbody>
                 </table>
+
+                <!-- form label -->
+                <table class="table table-danger mt-4" border="1" >
+                    <thead>
+                      <tr class="bg-info">
+                        <td colspan="6" style="width: 100%; padding: 3px; white-space: nowrap;">
+                            <h3 class="text-center">Employee Form</h3>
+                        </td>
+                      </tr>
+                      <tr>
+                        <th scope="col">Touched</th>
+                        <th scope="col">Untouched</th>
+                        <th scope="col">Pristine</th> <!-- pristine means : input field not yet changed -->
+                        <th scope="col">Dirty</th> <!-- dirty means : input field is changed -->
+                        <th scope="col">Valid</th>
+                        <th scope="col">Invalid</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>{{ employeeForm.touched }}</td>
+                        <td>{{ employeeForm.untouched }}</td>
+                        <td>{{ employeeForm.pristine }}</td>
+                        <td>{{ employeeForm.dirty }}</td>
+                        <td>{{ employeeForm.valid }}</td>
+                        <td>{{ employeeForm.invalid }}</td>
+                      </tr>
+                    </tbody>
+                </table>
             </div>
     
             <div class="form-group">
                 <label for="email"> Email </label>
-                <input type="text" id="email" class="form-control" name="email" [(ngModel)]="email">
+                <input required type="text" id="email" class="form-control" name="email" [(ngModel)]="email">
             </div>
 
             <div class="form-group">
