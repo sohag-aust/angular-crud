@@ -94,19 +94,23 @@
                 <input type="text" id="phone" class="form-control" name="phone" [(ngModel)]="employee.phoneNumber">
             </div>
 
-            <div class="form-group">
+            <div class="form-group" [class.has-error]="genderControl.touched && genderControl.invalid">
                 <label> Gender </label>
                 <div class="form-control">
                     <label class="radio-inline">
-                        <input type="radio" value="male" name="gender" [(ngModel)]="employee.gender">
+                        <input type="radio" required #genderControl="ngModel" value="male" name="gender" [(ngModel)]="employee.gender">
                         Male
                     </label>
 
                     <label class="radio-inline ml-3">
-                        <input type="radio" value="female" name="gender" [(ngModel)]="employee.gender">
+                        <input type="radio" required #genderControl="ngModel" value="female" name="gender" [(ngModel)]="employee.gender">
                         Female
                     </label>
                 </div>
+
+                <span class="help-block" *ngIf="genderControl.touched && genderControl.invalid">
+                    Gender is required
+                </span>
             </div>
 
             <div class="form-group">

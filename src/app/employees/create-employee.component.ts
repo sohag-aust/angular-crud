@@ -16,7 +16,7 @@ export class CreateEmployeeComponent implements OnInit {
   employee: Employee = {
     id: null!, // here ! sign is use for avoiding the error = "Type 'null' is not assignable to type T(means any type : string, number etc) "
     name: null!,
-    gender: 'male',
+    gender: null!,
     email: null!,
     phoneNumber: null!,
     contactPreferance: null!,
