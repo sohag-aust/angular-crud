@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
 
 import { Department } from '../models/department.model';
+import { Employee } from '../models/employee.model';
 
 @Component({
   selector: 'app-create-employee',
@@ -11,14 +12,19 @@ import { Department } from '../models/department.model';
 })
 export class CreateEmployeeComponent implements OnInit {
 
-  fullName!: string;
-  email!: string;
-  gender: string = 'male'; // check male by default, default value should be same as value property in html
-  phoneNumber!: number;
-  contactPreference!: string;
-  isActive!: boolean;
-  department: string = '3';
-  dateOfBirth: Date = new Date(1990, 0, 1);
+  // model binding in create employee form
+  employee: Employee = {
+    id: null!, // here ! sign is use for avoiding the error = "Type 'null' is not assignable to type T(means any type : string, number etc) "
+    name: null!,
+    gender: 'male',
+    email: null!,
+    phoneNumber: null!,
+    contactPreferance: null!,
+    dateOfBirth:new Date(1990, 0, 1),
+    department: '3',
+    isActive: null!,
+    photoPath: null!
+  }
 
   departments: Department[] = [
     { id: 1, name: 'Help Desk' },
@@ -28,8 +34,6 @@ export class CreateEmployeeComponent implements OnInit {
   ];
 
   datePickerConfig!: Partial<BsDatepickerConfig>;
-
-  photoPath!: string;
 
   previewPhoto: boolean = false;
 
@@ -53,9 +57,9 @@ export class CreateEmployeeComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  saveEmployee(empForm: NgForm): void {
+  saveEmployee(employee: Employee): void {
     console.log('form is submitted !');
-    console.log(empForm);
+    console.log(employee);
   }
 
   togglePhotoPreview(): void {

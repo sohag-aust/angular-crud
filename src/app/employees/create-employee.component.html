@@ -1,4 +1,4 @@
-<form #employeeForm="ngForm" (ngSubmit)="saveEmployee(employeeForm)"> <!-- ngNativeValidate directive, is used for enable browser validation, we should disable it, because, various browser implement browser validation differently -->
+<form #employeeForm="ngForm" (ngSubmit)="saveEmployee(employee)"> 
     <div class="panel panel-primary">
         <div class="panel-heading bg-primary mt-4">
             <h3 class="panel-title">Create Employee</h3>
@@ -8,7 +8,7 @@
             <div class="form-group">
                 <label for="fName"> Full Name </label>
                 <input required type="text" id="fName" class="form-control" [class.help-block-border]="fullNameControl.invalid && fullNameControl.touched" 
-                        name="fullName" [(ngModel)]="fullName" #fullNameControl="ngModel"> <!-- added validation class : [class.help-block-border] conditionally -->
+                        name="fullName" [(ngModel)]="employee.name" #fullNameControl="ngModel"> <!-- added validation class : [class.help-block-border] conditionally -->
                     
                 <span class="help-block" *ngIf="fullNameControl.invalid && fullNameControl.touched">
                     Full Name is required
@@ -77,24 +77,24 @@
     
             <div class="form-group">
                 <label for="email"> Email </label>
-                <input required type="text" id="email" class="form-control" name="email" [(ngModel)]="email">
+                <input required type="text" id="email" class="form-control" name="email" [(ngModel)]="employee.email">
             </div>
 
             <div class="form-group">
                 <label for="phone"> Phone Number </label>
-                <input type="text" id="phone" class="form-control" name="phone" [(ngModel)]="phoneNumber">
+                <input type="text" id="phone" class="form-control" name="phone" [(ngModel)]="employee.phoneNumber">
             </div>
 
             <div class="form-group">
                 <label> Gender </label>
                 <div class="form-control">
                     <label class="radio-inline">
-                        <input type="radio" value="male" name="gender" [(ngModel)]="gender">
+                        <input type="radio" value="male" name="gender" [(ngModel)]="employee.gender">
                         Male
                     </label>
 
                     <label class="radio-inline ml-3">
-                        <input type="radio" value="female" name="gender" [(ngModel)]="gender">
+                        <input type="radio" value="female" name="gender" [(ngModel)]="employee.gender">
                         Female
                     </label>
                 </div>
@@ -104,12 +104,12 @@
                 <label> Contact Preferences </label>
                 <div class="form-control">
                     <label class="radio-inline">
-                        <input type="radio" value="email" name="contact" [(ngModel)]="contactPreference">
+                        <input type="radio" value="email" name="contact" [(ngModel)]="employee.contactPreferance">
                         Email
                     </label>
 
                     <label class="radio-inline ml-3">
-                        <input type="radio" value="phone" name="contact" [(ngModel)]="contactPreference">
+                        <input type="radio" value="phone" name="contact" [(ngModel)]="employee.contactPreferance">
                         Phone
                     </label>
                 </div>
@@ -118,7 +118,7 @@
             <div class="form-group">
                 <div class="form-control">
                     <label class="checkbox-inline">
-                        <input type="checkbox" name="isActive" [(ngModel)]="isActive">
+                        <input type="checkbox" name="isActive" [(ngModel)]="employee.isActive">
                         Is Active
                     </label>
                 </div>
@@ -128,7 +128,7 @@
                 <label for="department">
                     Department
                 </label>
-                <select class="form-control" id="department" name="department" [(ngModel)]="department">
+                <select class="form-control" id="department" name="department" [(ngModel)]="employee.department">
                     <option *ngFor="let department of departments" [value]="department.id">
                         {{department.name}}
                     </option>
@@ -138,13 +138,13 @@
             <div class="row">
                 <div class="form-group col-lg-5">
                     <label for="dateOfBirth"> Date of Birth </label>
-                    <input type="text" bsDatepicker [bsConfig]="datePickerConfig" placement="right" id="dateOfBirth" class="form-control" name="dateOfBirth" [(ngModel)]="dateOfBirth"> <!-- placement: right for showing the date right, we can also set it to left -->
+                    <input type="text" bsDatepicker [bsConfig]="datePickerConfig" placement="right" id="dateOfBirth" class="form-control" name="dateOfBirth" [(ngModel)]="employee.dateOfBirth"> <!-- placement: right for showing the date right, we can also set it to left -->
                 </div>
             </div>
 
             <div class="form-group">
                 <label for="photoPath"> Photo Path </label>
-                <input type="text" id="photoPath" class="form-control" name="photoPath" [(ngModel)]="photoPath">
+                <input type="text" id="photoPath" class="form-control" name="photoPath" [(ngModel)]="employee.photoPath">
             </div>
 
             <div class="form-group">
@@ -154,7 +154,7 @@
             </div>
 
             <div class="form-group">
-                <img *ngIf="previewPhoto" [src]="photoPath" height="200px" width="200px">
+                <img *ngIf="previewPhoto" [src]="employee.photoPath" height="200px" width="200px">
             </div>
             
         </div>
@@ -166,3 +166,7 @@
 </form>
 
 Angular generated Form Model : {{employeeForm.value | json}}
+
+<br><br>
+
+Our Employee Model : {{ employee | json }}
