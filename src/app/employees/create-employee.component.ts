@@ -21,7 +21,7 @@ export class CreateEmployeeComponent implements OnInit {
     phoneNumber: null!,
     contactPreferance: null!,
     dateOfBirth:new Date(1990, 0, 1),
-    department: '3',
+    department: null!,
     isActive: null!,
     photoPath: null!
   }

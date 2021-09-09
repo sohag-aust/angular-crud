@@ -140,15 +140,24 @@
                 </div>
             </div>
 
-            <div class="form-group">
+            <div class="form-group" >
                 <label for="department">
                     Department
                 </label>
-                <select class="form-control" id="department" name="department" [(ngModel)]="employee.department">
+                <select required class="form-control" [class.help-block-border]="departmentControl.invalid && departmentControl.touched" id="department" name="department" 
+                        [(ngModel)]="employee.department" #departmentControl="ngModel">
+                    
+                    <option disabled [ngValue]="null">Select Department</option> <!-- if option value is string then should use `value` property, otherwise , if option value is null/object then use `ngValue property`-->
+                    <!-- `ng-value` directive is used to set the value attribute of an input element, or a select element. It is mainly used on <radio> and <option> elements to set the bound values when these elements are selected -->
+                    
                     <option *ngFor="let department of departments" [value]="department.id">
                         {{department.name}}
                     </option>
                 </select>
+
+                <span class="help-block" *ngIf="departmentControl.invalid && departmentControl.touched">
+                    Department is required
+                </span>
             </div>
 
             <div class="row">
