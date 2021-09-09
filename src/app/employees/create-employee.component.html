@@ -78,9 +78,9 @@
             <div class="form-group">
                 <label for="email"> Email </label>
                 <!-- add email validator using email directive -->
-                <input email required type="text" id="email" class="form-control" [class.help-block-border]="emailControl.invalid && emailControl.touched" 
+                <input email [required]="contactPreferenceControl.value === 'email'" type="text" id="email" class="form-control" [class.help-block-border]="emailControl.invalid" 
                         name="email" [(ngModel)]="employee.email" #emailControl="ngModel">
-                <span class="help-block" *ngIf="emailControl.errors && emailControl.errors.required && emailControl.touched"> <!-- another way in condition : *ngIf="emailControl.errors?.required && emailControl.touched" --> <!-- by using ? in ngIf we are avoiding null refernce error -->
+                <span class="help-block" *ngIf="emailControl.errors && emailControl.errors.required && contactPreferenceControl.value==='email' "> <!-- another way in condition : *ngIf="emailControl.errors?.required && emailControl.touched" --> <!-- by using ? in ngIf we are avoiding null refernce error -->
                     Email is required
                 </span>
 
@@ -91,7 +91,10 @@
 
             <div class="form-group">
                 <label for="phone"> Phone Number </label>
-                <input type="text" id="phone" class="form-control" name="phone" [(ngModel)]="employee.phoneNumber">
+                <input type="text" id="phone" [required]="contactPreferenceControl.value === 'phone'" class="form-control" [class.help-block-border]="phoneNumberControl.invalid" name="phone" [(ngModel)]="employee.phoneNumber" #phoneNumberControl="ngModel">
+                <span class="help-block" *ngIf="phoneNumberControl.errors && phoneNumberControl.errors.required && contactPreferenceControl.value==='phone' ">
+                    Phone Number is required
+                </span>
             </div>
 
             <div class="form-group" [class.has-error]="genderControl.touched && genderControl.invalid">
@@ -117,12 +120,12 @@
                 <label> Contact Preferences </label>
                 <div class="form-control">
                     <label class="radio-inline">
-                        <input type="radio" value="email" name="contact" [(ngModel)]="employee.contactPreferance">
+                        <input type="radio" value="email" name="contact" [(ngModel)]="employee.contactPreferance" #contactPreferenceControl="ngModel">
                         Email
                     </label>
 
                     <label class="radio-inline ml-3">
-                        <input type="radio" value="phone" name="contact" [(ngModel)]="employee.contactPreferance">
+                        <input type="radio" value="phone" name="contact" [(ngModel)]="employee.contactPreferance" #contactPreferenceControl="ngModel">
                         Phone
                     </label>
                 </div>
