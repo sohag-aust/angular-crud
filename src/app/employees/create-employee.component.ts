@@ -37,6 +37,9 @@ export class CreateEmployeeComponent implements OnInit {
 
   previewPhoto: boolean = false;
 
+  password!: string;
+  confirmPassword!: string;
+
   constructor() { 
     this.datePickerConfig = Object.assign(
       {

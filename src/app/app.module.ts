@@ -18,6 +18,7 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 
 // datepicker customization
 import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
+import { ConfirmEqualValidatorDirective } from './shared/confirm-equal-validator.directive';
 
 // declaring routes
 const appRoutes: Routes = [
@@ -30,7 +31,8 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     ListEmployeesComponent,
-    CreateEmployeeComponent
+    CreateEmployeeComponent,
+    ConfirmEqualValidatorDirective
   ],
   imports: [
     BrowserModule,

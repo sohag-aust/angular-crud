@@ -182,6 +182,29 @@
                 <img *ngIf="previewPhoto" [src]="employee.photoPath" height="200px" width="200px">
             </div>
             
+            <div class="form-group" [class.has-error]="passwordControl.touched && passwordControl.invalid">
+                <label for="password" class="control-label"> Password </label>
+                <input required name="password" type="text" class="form-control" [(ngModel)]="password" #passwordControl="ngModel">
+                <span class="help-block" *ngIf="passwordControl.touched && passwordControl.errors?.required">
+                    Password is required
+                </span>
+            </div>
+
+            <div class="form-group" [class.has-error]="confirmPasswordControl.touched && confirmPasswordControl.invalid">
+                <label for="confirmPassword" class="control-label"> Confirm Password </label>
+                <input required appConfirmEqualValidator="password" name="confirmPassword" type="text" class="form-control" [(ngModel)]="confirmPassword" #confirmPasswordControl="ngModel">
+                <span class="help-block" *ngIf="confirmPasswordControl.touched && confirmPasswordControl.errors?.required">
+                    Confirm Password is required
+                </span>
+
+                <span class="help-block" *ngIf="confirmPasswordControl.touched && confirmPasswordControl.errors?.notEqual && !confirmPasswordControl.errors?.required"> <!-- confirmPassword.errors?.notEqual :  here notEqual found from validator directive -->
+                   Password and Confirm Password doesn't match
+                </span>
+            </div>
+
+            <p>Password : {{password}}</p>
+            <p>Confirm Password : {{confirmPassword}}</p>
+
         </div>
     
         <div class="panel-footer mt-3">
