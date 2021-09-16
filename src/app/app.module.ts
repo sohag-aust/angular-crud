@@ -22,6 +22,7 @@ import { ConfirmEqualValidatorDirective } from './shared/confirm-equal-validator
 
 // services
 import { EmployeeService } from './services/employee.service';
+import { DisplayEmployeeComponent } from './employees/display-employee.component';
 
 // declaring routes
 const appRoutes: Routes = [
@@ -35,7 +36,8 @@ const appRoutes: Routes = [
     AppComponent,
     ListEmployeesComponent,
     CreateEmployeeComponent,
-    ConfirmEqualValidatorDirective
+    ConfirmEqualValidatorDirective,
+    DisplayEmployeeComponent
   ],
   imports: [
     BrowserModule,
