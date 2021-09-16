@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Employee } from '../models/employee.model';
 
 @Component({
@@ -6,28 +6,25 @@ import { Employee } from '../models/employee.model';
   templateUrl: './display-employee.component.html',
   styleUrls: ['./display-employee.component.css']
 })
-export class DisplayEmployeeComponent implements OnInit, OnChanges {
+export class DisplayEmployeeComponent implements OnInit {
+
+  private _employee!: Employee;
 
   @Input()
-  employee!: Employee;
+  set employee(emp: Employee) {
+    console.log(`Previous Employee Name: ${this.employee ? this.employee.name : 'NULL'}`);
+    console.log(`Current Employee Name: ${emp.name}`);
+    this._employee = emp;
+  }
+
+  get employee(): Employee {
+    return this._employee;
+  } 
 
   constructor() { }
 
   ngOnInit(): void {
 
-  }
-
-  ngOnChanges(changes: SimpleChanges): void {
-    console.log(changes);
-
-    const previousEmployee = <Employee>changes.employee.previousValue;
-    const currentEmployee = <Employee>changes.employee.currentValue;
-
-    const previousEmployeeName = previousEmployee ? previousEmployee.name : 'NULL';
-    const currentEmployeeName = currentEmployee.name;
-
-    console.log(`Previous Employee Name: ${previousEmployeeName}`);
-    console.log(`Current Employee Name: ${currentEmployeeName}`);
   }
 
 }
