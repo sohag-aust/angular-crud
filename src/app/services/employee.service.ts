@@ -14,7 +14,7 @@ export class EmployeeService {
         contactPreferance: 'Email',
         email: 'kudvenkat@pragimtech.com',
         dateOfBirth: new Date('10/25/1988'),
-        department: 'IT',
+        department: '3',
         isActive: true,
         photoPath: 'assets/images/p1.jpg'
       },
@@ -25,7 +25,7 @@ export class EmployeeService {
         contactPreferance: 'Phone',
         phoneNumber: 1944556677,
         dateOfBirth: new Date('11/20/1979'),
-        department: 'HR',
+        department: '2',
         isActive: true,
         photoPath: 'assets/images/p2.jpg'
       },
@@ -36,7 +36,7 @@ export class EmployeeService {
         contactPreferance: 'Phone',
         phoneNumber: 1966998801,
         dateOfBirth: new Date('3/25/1976'),
-        department: 'IT',
+        department: '3',
         isActive: false,
         photoPath: 'assets/images/p3.jpg'
       }
@@ -46,5 +46,9 @@ export class EmployeeService {
 
   get employees(): Employee[] {
     return this.listEmployees;
+  }
+
+  addEmployee(employee: Employee): void {
+    this.listEmployees.push(employee);
   }
 }

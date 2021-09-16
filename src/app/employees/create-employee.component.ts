@@ -5,6 +5,9 @@ import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
 import { Department } from '../models/department.model';
 import { Employee } from '../models/employee.model';
 
+import { Router } from '@angular/router';
+import { EmployeeService } from '../services/employee.service';
+
 @Component({
   selector: 'app-create-employee',
   templateUrl: './create-employee.component.html',
@@ -40,7 +43,8 @@ export class CreateEmployeeComponent implements OnInit {
   password!: string;
   confirmPassword!: string;
 
-  constructor() { 
+  constructor(private employeeService: EmployeeService, 
+              private router: Router) { 
     this.datePickerConfig = Object.assign(
       {
 
@@ -63,6 +67,9 @@ export class CreateEmployeeComponent implements OnInit {
   saveEmployee(employee: Employee): void {
     console.log('form is submitted !');
     console.log(employee);
+
+    this.employeeService.addEmployee(employee);
+    this.router.navigate(['list']);
   }
 
   togglePhotoPreview(): void {
